@@ -1,0 +1,22 @@
+@startuml class-draft
+title Exporter classes — draft
+skinparam handwritten true
+skinparam monochrome true
+skinparam shadowing false
+
+interface Exporter
+interface WriterExporter
+class HtmlTableExporter
+class MarkdownExporter
+class ExporterRegistry
+
+Exporter <|-- WriterExporter
+WriterExporter <|.. HtmlTableExporter
+WriterExporter <|.. MarkdownExporter
+ExporterRegistry --> Exporter : holds
+
+note bottom of MarkdownExporter
+  new class — copy the
+  HTML table exporter
+end note
+@enduml

@@ -1,0 +1,41 @@
+@startuml sequence-detailed
+title Markdown Table Export — Sequence (detailed)
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam sequenceMessageAlign center
+skinparam ParticipantBackgroundColor #F5F7FA
+skinparam ParticipantBorderColor #4A6FA5
+skinparam ActorBorderColor #4A6FA5
+
+actor User
+participant "exporters.js\n(ExporterManager)" as UI
+participant "ExportRowsCommand" as Cmd
+participant "ExporterRegistry" as Reg
+participant "MarkdownExporter" as Exp
+participant "CustomizableTabular\nExporterUtilities" as Util
+participant "TabularSerializer\n(inline)" as Ser
+participant "HttpServletResponse" as Resp
+
+User -> UI : click "Markdown table"
+UI -> Cmd : POST /command/core/export-rows/<name>.md\nformat=md, engine=<facets>
+activate Cmd
+Cmd -> Reg : getExporter("md")
+Reg --> Cmd : MarkdownExporter
+Cmd -> Resp : setHeader(Content-Type, "text/markdown")
+Cmd -> Exp : export(project, params, engine, writer)
+activate Exp
+Exp -> Util : exportRows(project, engine, params, serializer)
+activate Util
+Util -> Ser : startFile(options)
+Util -> Ser : addRow(headerCells, true)
+Ser -> Resp : "| col0 | col1 |\n| --- | --- |\n"
+loop each visible (faceted) row
+  Util -> Ser : addRow(rowCells, false)
+  Ser -> Resp : "| c0 | c1 |\n"
+end
+Util -> Ser : endFile()
+deactivate Util
+deactivate Exp
+Cmd --> User : Markdown file download
+deactivate Cmd
+@enduml

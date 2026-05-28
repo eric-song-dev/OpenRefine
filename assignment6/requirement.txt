@@ -1,0 +1,43 @@
+Design a new feature
+Due Tuesday by 4pm Points 10 Submitting a file upload File Types pdf Available after May 26 at 4pm
+As a team, design a new feature for your system.  The delivery is a design document that details:
+
+brief description of the new feature and what it aims to do
+motivation for why this new feature is valuable to the system
+description of relevant current aspects of your system, particularly in terms of important current implementation details
+the detailed design of your new feature -- how will it fit with/augments/change the current code base; in other words, what will the new implementation look like; 
+a brief description of any limitations of your new feature; and
+all intermediate artifacts that the team produces (e.g., whiteboard sketches, diagrams created in a modeling tool, partial design docs, Figma drawings, UML diagrams, Discord discussions -- as applicable) as an appendix to the document. 
+Rubric
+Design a new feature
+Design a new feature
+Criteria	Ratings	Pts
+This criterion is linked to a Learning OutcomeMeaningfulness
+The design would make a meaningful contribution to the system (i.e., the new feature is non-trivial and relevant).
+1.5 pts
+Full Marks
+0 pts
+No Marks
+1.5 pts
+This criterion is linked to a Learning OutcomeQuality
+The design ensures that it fits with the current code, follows good design principles (e.g., separation of concerns, design patterns, ...), and captures all aspects of the intended new feature well.
+3.5 pts
+Full Marks
+0 pts
+No Marks
+3.5 pts
+This criterion is linked to a Learning OutcomeUnderstandability
+The new design is properly documented so someone who may not be familiar with the system and new feature can understand it.
+1.5 pts
+Full Marks
+0 pts
+No Marks
+1.5 pts
+This criterion is linked to a Learning OutcomeDesign approach
+The team followed a good design process (as evidenced through its intermediate artifacts).
+3.5 pts
+Full Marks
+0 pts
+No Marks
+3.5 pts
+Total Points: 10

@@ -1,0 +1,38 @@
+@startuml flowchart-detailed
+title Markdown Table Export — Control Flow (detailed)
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam ActivityBackgroundColor #F5F7FA
+skinparam ActivityBorderColor #4A6FA5
+skinparam ActivityDiamondBackgroundColor #FDF3E7
+
+start
+:ExportRowsCommand.doPost()\nreceives POST (format = "md");
+:ExporterRegistry.getExporter("md")\n→ MarkdownExporter;
+:response.setHeader("Content-Type", "text/markdown");
+:MarkdownExporter.export(project, params, engine, writer);
+:CustomizableTabularExporterUtilities.exportRows(...);
+:serializer.startFile()  (no preamble emitted);
+
+:addRow(headerCells, isHeader = true);
+note right
+  write "| col0 | col1 | ... |"
+  then  "| --- | --- | ... |"
+end note
+
+while (more visible rows?) is (yes)
+  :addRow(rowCells, isHeader = false);
+  partition "for each cell" {
+    if (cell text null or empty?) then (yes)
+      :write blank cell "  |";
+    else (no)
+      :escapeMarkdown(text)\n'|' -> '\\|',  CR/LF -> space;
+      :write " <text> |";
+    endif
+  }
+endwhile (no)
+
+:serializer.endFile()  (no trailer);
+:stream Markdown to HTTP response\n(attachment: <project>.md);
+stop
+@enduml

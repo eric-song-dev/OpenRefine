@@ -1,0 +1,60 @@
+@startuml class-detailed
+title Markdown Exporter — Class Design (detailed)
+skinparam shadowing false
+skinparam defaultFontName Helvetica
+skinparam classAttributeIconSize 0
+skinparam classBackgroundColor #F5F7FA
+skinparam classBorderColor #4A6FA5
+skinparam noteBackgroundColor #FDF3E7
+skinparam noteBorderColor #C9A66B
+
+interface Exporter {
+  +getContentType(): String
+}
+interface WriterExporter {
+  +export(Project, Properties, Engine, Writer)
+}
+interface TabularSerializer {
+  +startFile(JsonNode)
+  +endFile()
+  +addRow(List<CellData>, boolean)
+}
+class CustomizableTabularExporterUtilities {
+  +{static} exportRows(Project, Engine, Properties, TabularSerializer)
+}
+class ExporterRegistry {
+  -{static} s_formatToExporter: Map<String, Exporter>
+  +{static} registerExporter(String, Exporter)
+  +{static} getExporter(String): Exporter
+}
+class HtmlTableExporter {
+  +getContentType(): String
+  +export(Project, Properties, Engine, Writer)
+}
+class MarkdownExporter {
+  +getContentType(): String
+  +export(Project, Properties, Engine, Writer)
+  -{static} escapeMarkdown(String): String
+}
+class ExportRowsCommand {
+  +doPost(HttpServletRequest, HttpServletResponse)
+}
+
+Exporter <|-- WriterExporter
+WriterExporter <|.. HtmlTableExporter
+WriterExporter <|.. MarkdownExporter
+MarkdownExporter ..> TabularSerializer : creates inline
+MarkdownExporter ..> CustomizableTabularExporterUtilities : exportRows()
+CustomizableTabularExporterUtilities ..> TabularSerializer : drives
+ExporterRegistry o--> "*" Exporter
+ExportRowsCommand ..> ExporterRegistry : getExporter("md")
+ExportRowsCommand ..> WriterExporter : export(...)
+
+note bottom of MarkdownExporter
+  New class. Mirrors HtmlTableExporter:
+  builds a GitHub-flavored Markdown table
+  through an inline TabularSerializer.
+  Only addition outside this class:
+  one registry line + one menu item + one i18n key.
+end note
+@enduml

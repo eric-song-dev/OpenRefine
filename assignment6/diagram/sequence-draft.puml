@@ -1,0 +1,17 @@
+@startuml sequence-draft
+title Export sequence — draft
+skinparam handwritten true
+skinparam monochrome true
+skinparam shadowing false
+
+actor User
+participant "UI menu" as UI
+participant "Server" as Server
+participant "Markdown\nExporter" as Exp
+
+User -> UI : click "Markdown table"
+UI -> Server : POST export-rows (md)
+Server -> Exp : export()
+Exp --> Server : markdown text
+Server --> User : download .md file
+@enduml
