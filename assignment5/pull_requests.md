@@ -17,7 +17,7 @@ The three pull requests below add tests to three different layers of the system:
 ## PR 1 — GREL `combin` math function tests
 
 - **Title:** `test(grel): cover combin math function`
-- **Pull request:** [7796](https://github.com/OpenRefine/OpenRefine/pull/7796)
+- **Pull request:** _to be filled after push: `https://github.com/OpenRefine/OpenRefine/pull/<NUMBER>`_
 - **Branch on fork:** [test-combin-grel-math](https://github.com/eric-song-dev/OpenRefine/tree/test-combin-grel-math)
 - **New file:** `modules/grel/src/test/java/com/google/refine/expr/functions/math/CombinTests.java`
 
@@ -30,7 +30,7 @@ The three pull requests below add tests to three different layers of the system:
 ## PR 2 — `TextSearchFacet` filter tests
 
 - **Title:** `test(browsing): cover TextSearchFacet filter modes`
-- **Pull request:** [7797](https://github.com/OpenRefine/OpenRefine/pull/7797)
+- **Pull request:** _to be filled after push: `https://github.com/OpenRefine/OpenRefine/pull/<NUMBER>`_
 - **Branch on fork:** [test-text-search-facet](https://github.com/eric-song-dev/OpenRefine/tree/test-text-search-facet)
 - **New file:** `modules/core/src/test/java/com/google/refine/browsing/facets/TextSearchFacetTests.java` (also creates the `facets/` test directory)
 
@@ -43,10 +43,27 @@ The three pull requests below add tests to three different layers of the system:
 ## PR 3 — `JsonValueConverter` edge-case tests
 
 - **Title:** `test(expr): cover JsonValueConverter numeric and container edge cases`
-- **Pull request:** [7798](https://github.com/OpenRefine/OpenRefine/pull/7798)
+- **Pull request:** _to be filled after push: `https://github.com/OpenRefine/OpenRefine/pull/<NUMBER>`_
 - **Branch on fork:** [test-jsonvalueconverter-edge-cases](https://github.com/eric-song-dev/OpenRefine/tree/test-jsonvalueconverter-edge-cases)
 - **Modified file:** `main/tests/server/src/com/google/refine/expr/util/JsonValueConverterTests.java`
 
 **What the test adds.** `JsonValueConverter` is the utility that coerces Jackson `JsonNode` values into Java primitives or `Comparable`s during GREL expression evaluation. The existing eight tests covered `convert()` only for the common path of an `ObjectMapper`-parsed JSON tree — they never tested `convert()` on a `null` `JsonNode` reference, never exercised the `BigInteger` or `BigDecimal` branches, and never called `convertComparable()` at all. The eight new tests close those gaps: `convert(null)`, `convert` on a `BigIntegerNode` (verifies the `asLong()` coercion) and `BigDecimalNode` (verifies `asDouble()`), the full primitive surface of `convertComparable` (int, double, text, boolean), `convertComparable` on a JSON null and a Java null, and the two `IllegalArgumentException` paths for object and array nodes that the public API contract documents.
 
 **Why this test matters.** This class sits underneath every GREL expression that touches a JSON-shaped value — reconciliation results, structured importers, and HTTP fetch responses all flow through it. The bug we are guarding against is silent type-coercion drift: someone could replace `value.asLong()` with `value.asInt()` in the `BigInteger` branch, or remove the `convertComparable` exception in favor of a silent `null`, and the original tests would not notice because no existing test constructs those node types or calls the second method. Of the small utility classes in `expr/util` that had thin coverage, this one has the most branches (ten in `convertComparable` alone) and the largest downstream blast radius. A test here protects far more callers than equivalent tests on a self-contained helper would.
+
+---
+
+## Reproducing locally
+
+```sh
+# PR 1 — GREL combin
+mvn -pl modules/grel -am -Dtest=CombinTests -Dsurefire.failIfNoSpecifiedTests=false test
+
+# PR 2 — TextSearchFacet
+mvn -pl modules/core -Dtest=TextSearchFacetTests -Dsurefire.failIfNoSpecifiedTests=false test
+
+# PR 3 — JsonValueConverter
+mvn -pl main -am -Dtest=JsonValueConverterTests -Dsurefire.failIfNoSpecifiedTests=false test
+```
+
+All three runs report `Tests run: N, Failures: 0, Errors: 0, Skipped: 0` on the corresponding branches.

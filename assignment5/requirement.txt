@@ -1,0 +1,32 @@
+Submit pull requests for three new test cases
+Due Tuesday by 4pm Points 10 Submitting a file upload File Types pdf
+As a team, submit three pull requests, each pull request adding a new test case for your system.
+
+To Canvas, submit a document that, for each test case: (1) includes a link to the pull request, (2) describes what the test case adds to the system in terms of helping test it and understand it, and (3) explains why this test case is important as compared to others you could have contributed.
+
+Rubric
+Submit pull requests for three test cases
+Submit pull requests for three test cases
+Criteria	Ratings	Pts
+This criterion is linked to a Learning OutcomeCompliance
+Pull request follows conventions established by the community (i.e., it meets the expectations laid out by the community as part of the overall social context).
+2 pts
+Full Marks
+0 pts
+No Marks
+2 pts
+This criterion is linked to a Learning OutcomeMeaningfulness
+Each pull request makes a meaningful contribution to the system (i.e., the test case does not just test some trivial aspect of the functionality).
+5 pts
+Full Marks
+0 pts
+No Marks
+5 pts
+This criterion is linked to a Learning OutcomeDiversity
+The three test cases cover different parts of the system.
+3 pts
+Full Marks
+0 pts
+No Marks
+3 pts
+Total Points: 10
