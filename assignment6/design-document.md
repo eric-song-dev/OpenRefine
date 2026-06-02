@@ -65,7 +65,13 @@ The feature is **one new strategy class plus three one-line registrations**. No 
 
 The control flow:
 
-![Flowchart](./diagram/flowchart-detailed.png)
+#### Flowchart Sketch
+
+<img src="./whiteboard-sketch/flowchart.jpg" width="400">
+
+#### Flowchart Detailed
+
+![Flowchart Detailed](./diagram/flowchart-detailed.png)
 
 ### 4.3 Wiring the format in
 
@@ -90,7 +96,13 @@ Three additions register the format end to end:
 
 The user's click flows through the unchanged `ExportRowsCommand`, which looks up the format `"md"` in the registry and streams the result:
 
-![Sequence diagram](./diagram/sequence-detailed.png)
+#### Sequence Sketch
+
+<img src="./whiteboard-sketch/sequence.jpg" width="400">
+
+#### Sequence Detailed
+
+![Sequence Detailed](./diagram/sequence-detailed.png)
 
 ### 4.5 Tests
 
