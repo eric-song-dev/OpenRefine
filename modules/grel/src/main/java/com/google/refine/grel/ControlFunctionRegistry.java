@@ -130,6 +130,7 @@ import com.google.refine.expr.functions.strings.Replace;
 import com.google.refine.expr.functions.strings.ReplaceChars;
 import com.google.refine.expr.functions.strings.ReplaceEach;
 import com.google.refine.expr.functions.strings.SHA1;
+import com.google.refine.expr.functions.strings.Slugify;
 import com.google.refine.expr.functions.strings.SmartSplit;
 import com.google.refine.expr.functions.strings.Split;
 import com.google.refine.expr.functions.strings.SplitByCharType;
@@ -241,6 +242,7 @@ public class ControlFunctionRegistry {
         registerFunction("range", new Range());
         registerFunction("split", new Split());
         registerFunction("smartSplit", new SmartSplit());
+        registerFunction("slugify", new Slugify());
         registerFunction("splitByCharType", new SplitByCharType());
         registerFunction("splitByLengths", new SplitByLengths());
         registerFunction("partition", new Partition());
