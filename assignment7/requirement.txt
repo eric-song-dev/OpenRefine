@@ -1,0 +1,13 @@
+Submit individual pull request
+Due Tuesday by 4pm Points 12.5 Submitting a file upload Available after Jun 2 at 4pm
+Individually, design and implement a meaningful new feature and submit a pull request for your system.
+
+To Canvas, submit a document that includes:
+
+   1. Your design as initially produced.
+
+   2. A link to the pull request
+
+   3. A link to the project guidelines (if available)
+
+   4. A reflection whether the implementation had to deviate from your design and, if so, in what ways and why (what were the strengths of the original design, what were the weaknesses, what did you have to do differently)

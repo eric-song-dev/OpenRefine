@@ -1,0 +1,23 @@
+@startuml
+title collapseWhitespace Sequence Diagram
+
+actor User
+participant "GREL Parser" as Parser
+participant "ControlFunctionRegistry" as Registry
+participant "CollapseWhitespace" as Function
+participant "CharMatcher.whitespace()" as Matcher
+
+User -> Parser : evaluate value.collapseWhitespace()
+Parser -> Registry : getFunction("collapseWhitespace")
+Registry --> Parser : CollapseWhitespace
+Parser -> Function : call(bindings, [value])
+alt valid string argument
+  Function -> Matcher : trimAndCollapseFrom(value, ' ')
+  Matcher --> Function : normalized string
+  Function --> Parser : normalized string
+else invalid argument
+  Function --> Parser : EvalError
+end
+Parser --> User : result
+
+@enduml

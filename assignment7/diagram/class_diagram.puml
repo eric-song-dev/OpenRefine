@@ -1,0 +1,36 @@
+@startuml
+title collapseWhitespace Class Diagram
+
+interface Function {
+  +call(bindings: Properties, args: Object[]): Object
+  +getDescription(): String
+  +getParams(): String
+  +getReturns(): String
+}
+
+class CollapseWhitespace {
+  +call(bindings: Properties, args: Object[]): Object
+  +getDescription(): String
+  +getParams(): String
+  +getReturns(): String
+}
+
+class ControlFunctionRegistry {
+  +registerFunction(name: String, f: Function): void
+  +getFunction(name: String): Function
+}
+
+class FunctionDescription {
+  +str_collapse_whitespace(): String
+}
+
+class EvalError
+class CharMatcher
+
+Function <|.. CollapseWhitespace
+ControlFunctionRegistry --> Function : registers
+CollapseWhitespace --> FunctionDescription : description
+CollapseWhitespace --> CharMatcher : normalize whitespace
+CollapseWhitespace --> EvalError : invalid input
+
+@enduml

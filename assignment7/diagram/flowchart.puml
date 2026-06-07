@@ -1,0 +1,19 @@
+@startuml
+title collapseWhitespace Flowchart
+
+start
+:User evaluates collapseWhitespace(s);
+if (Exactly one argument?) then (yes)
+  if (Argument is non-null String?) then (yes)
+    :Trim leading/trailing whitespace;
+    :Collapse each whitespace run to one ASCII space;
+    :Return normalized string;
+  else (no)
+    :Return EvalError;
+  endif
+else (no)
+  :Return EvalError;
+endif
+stop
+
+@enduml
