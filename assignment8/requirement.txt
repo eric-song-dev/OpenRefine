@@ -1,0 +1,50 @@
+Submit new feature (team) pull request
+Due Tuesday by 4pm Points 10 Submitting a file upload File Types pdf Available after Jun 2 at 4pm
+As a team, implement the design of your new feature and submit a pull request for your system, with the caveat that, if the social context does not allow this, stop short of submitting the pull request and make it only locally.
+
+To Canvas, submit a document that includes:
+
+   1. A link to the pull request
+
+   2. A link to the project guidelines (if available)
+
+   3. A reflection whether the implementation had to deviate from your design and, if so, in what ways and why (what were the strengths of the original design, what were the weaknesses, what did you have to do differently)
+
+ 
+
+ 
+
+Rubric
+Submit your feature
+Submit your feature
+Criteria	Ratings	Pts
+This criterion is linked to a Learning OutcomeCompliance
+The pull request follows conventions established by the community (i.e., they meet the expectations laid out by the community as part of the overall social context).
+2.5 pts
+Full Marks
+0 pts
+No Marks
+2.5 pts
+This criterion is linked to a Learning OutcomeMeaningfulness
+The pull request makes a meaningful contribution to the system (i.e., it does not just fix typos in the documentation, is just a test case, is a one line change, ...).
+2.5 pts
+Full Marks
+0 pts
+No Marks
+2.5 pts
+This criterion is linked to a Learning OutcomeReflective discussion
+The discussion as to whether the implementation of your feature had to deviate from how the team had designed it is clear and insightful.
+2.5 pts
+Full Marks
+0 pts
+No Marks
+2.5 pts
+This criterion is linked to a Learning OutcomeDesign principles
+The degree to which the code embeds good design principles.
+2.5 pts
+Full Marks
+0 pts
+No Marks
+2.5 pts
+Total Points: 10
+
