@@ -60,11 +60,11 @@ PlantUML sources and rendered diagrams are in `./diagram/`.
 
 ## 2. Pull Request Link
 
-TODO: Add the GitHub pull request link after opening the PR.
+https://github.com/OpenRefine/OpenRefine/pull/7817
 
 ## 3. Project Guidelines Link
 
-[OpenRefine Contributing Guide](https://github.com/OpenRefine/OpenRefine/blob/master/CONTRIBUTING.md)
+https://openrefine.org/docs
 
 ## 4. Implementation Reflection
 
